@@ -1,0 +1,41 @@
+--- a/Parser/myreadline.c 2021-02-14 00:14:11.346826301 -0800
++++ b/Parser/myreadline.c 2021-02-14 00:14:02.576000000 -0800
+@@ -27,9 +27,14 @@
+ /* This function restarts a fgets() after an EINTR error occurred
+    except if PyOS_InterruptOccurred() returns true. */
+
++extern void emscripten_ensure_data_in_stdin();
++
+ static int
+ my_fgets(char *buf, int len, FILE *fp)
+ {
++    if (fp == stdin)
++        emscripten_ensure_data_in_stdin();
++
+ #ifdef MS_WINDOWS
+     HANDLE hInterruptEvent;
+ #endif
+
+--- a/Programs/python.c   2021-02-14 04:42:54.678783855 -0800
++++ b/Programs/python.c   2021-02-14 04:42:51.457000000 -0800
+@@ -3,6 +3,8 @@
+ #include "Python.h"
+ #include "pycore_pylifecycle.h"
+
++void emscripten_ensure_data_in_stdin() {}
++
+ #ifdef MS_WINDOWS
+ int
+ wmain(int argc, wchar_t **argv)
+
+--- a/Programs/_testembed.c    2021-02-14 05:23:43.912719040 -0800
++++ b/Programs/_testembed.c    2021-02-14 05:23:39.729000000 -0800
+@@ -23,6 +23,8 @@
+ /* Use path starting with "./" avoids a search along the PATH */
+ #define PROGRAM_NAME L"./_testembed"
+
++void emscripten_ensure_data_in_stdin() {}
++
+ static void _testembed_Py_Initialize(void)
+ {
+     Py_SetProgramName(PROGRAM_NAME);
