@@ -39,3 +39,15 @@
  static void _testembed_Py_Initialize(void)
  {
      Py_SetProgramName(PROGRAM_NAME);
+
+--- a/Python/fileutils.c       2021-02-14 03:25:48.262798165 -0800
++++ b/Python/fileutils.c       2021-02-16 07:11:15.486575604 -0800
+@@ -1523,6 +1523,8 @@
+     do {
+         Py_BEGIN_ALLOW_THREADS
+         errno = 0;
++        extern void emscripten_ensure_data_in_stdin();
++        if (fd == 0) emscripten_ensure_data_in_stdin();
+ #ifdef MS_WINDOWS
+         n = read(fd, buf, (int)count);
+ #else

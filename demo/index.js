@@ -1,4 +1,4 @@
-import * as PyJS from "https://cdn.jsdelivr.net/npm/@programmingplus/pyjs@0.0.4";
+import * as PyJS from "./pyjs.js";
 
 document.getElementById("loading-indicator").style.display = "none";
 

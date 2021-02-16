@@ -34,8 +34,7 @@ RUN mkdir -p /tmp/python && \
     ./python.sh unpack && \
     pushd build/Python-3.8.3 && (patch -s -p1 < /tmp/python-async-stdin.patch) && popd && \
     ./python.sh hostpython && \
-    ./python.sh emscripten && \
-    ./python.sh crosspython \
+    ./python.sh emscripten \
     "
 
 VOLUME ["/tmp/pyjs"]
