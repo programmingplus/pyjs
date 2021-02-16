@@ -48,6 +48,17 @@ run.addEventListener("click", async () => {
   };
   const onDataEvent = term.onData((data) => {
     switch (data) {
+      case "\x04": // ctrl-d
+        if (lineBuffer.length) {
+          if (lineBufferPos < lineBuffer.length) {
+            term.write(`\x1b[K`);
+            lineBuffer.splice(lineBufferPos, 1);
+            flushSuffix();
+          }
+        } else {
+          resolveStdinBufferPromise();
+        }
+        break;
       case "\r": // enter
         term.write("\r\n");
         stdinBuffer += lineBuffer.join("") + "\n";
