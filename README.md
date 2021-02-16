@@ -12,7 +12,7 @@ You can import PyJS from CDN directly:
 <pre id="output"></pre>
 
 <script type="module">
-  import { run } from "https://cdn.jsdelivr.net/npm/@programmingplus/pyjs@0.0.4";
+  import { run } from "https://cdn.jsdelivr.net/npm/@programmingplus/pyjs@0.0.5";
 
   const output = (s) => (document.getElementById("output").textContent += s);
   run(`print(42 ** 42)`, { writeStdout: output, writeStderr: output });
