@@ -7,7 +7,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1, user-scalable=0"
     />
-    <title>PyJS Example</title>
+    <title>PyJS Demo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.10.0/css/xterm.css" />
     <script src="https://cdn.jsdelivr.net/npm/xterm@4.10.0/lib/xterm.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.5.0/lib/xterm-addon-fit.js"></script>
@@ -148,7 +148,12 @@ print(f"Hello {name}")
 
       document.getElementById("loading-indicator").style.display = "none";
 
-      const term = new Terminal();
+      const term = new Terminal({
+        fontSize: 14,
+        lineHeight: 1.6,
+        fontFamily:
+          '"Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace',
+      });
       const fitAddon = new FitAddon.FitAddon();
       term.loadAddon(fitAddon);
       term.open(document.getElementById("terminal"));
