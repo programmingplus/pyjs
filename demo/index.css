@@ -1,0 +1,124 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  font-family: "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+textarea,
+button {
+  margin: 0;
+  font: inherit;
+  border: 0 none;
+  border-radius: 0;
+  outline: 0 none;
+}
+
+header {
+  display: flex;
+}
+
+@media (max-width: 420px) {
+  header {
+    flex-direction: column;
+  }
+}
+
+#editor {
+  background-color: #f5f5f6;
+  padding: 1em;
+  resize: vertical;
+  flex: 1;
+  min-width: 0;
+  min-height: 10em;
+}
+
+#editor:focus {
+  background-color: #fff;
+}
+
+#run {
+  padding: 1em 3em;
+  appearance: none;
+  background-color: #11518d;
+  color: #fff;
+  cursor: pointer;
+}
+
+#run:active {
+  background-color: rgba(17, 81, 141, 0.9);
+}
+
+#run:disabled {
+  background-color: #eee;
+  color: #999;
+  cursor: not-allowed;
+}
+
+#terminal {
+  position: relative;
+  background-color: #000;
+  flex: 1;
+  min-height: 400px;
+}
+
+#loading-indicator {
+  margin: 0;
+  padding: 1em;
+  color: #fff;
+}
+
+#terminal > .xterm {
+  padding: 1em;
+}
+
+.xterm-viewport::-webkit-scrollbar {
+  background-color: #000;
+  border-radius: 6px;
+  border: 3px solid #000;
+  width: 1em;
+}
+
+.xterm-viewport::-webkit-scrollbar-thumb {
+  background-color: #333;
+}
+
+/* GitHub Corner */
+
+.github-corner:hover .octo-arm {
+  animation: octocat-wave 560ms ease-in-out;
+}
+
+@keyframes octocat-wave {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  20%,
+  60% {
+    transform: rotate(-25deg);
+  }
+  40%,
+  80% {
+    transform: rotate(10deg);
+  }
+}
+
+@media (max-width: 500px) {
+  .github-corner:hover .octo-arm {
+    animation: none;
+  }
+  .github-corner .octo-arm {
+    animation: octocat-wave 560ms ease-in-out;
+  }
+}
