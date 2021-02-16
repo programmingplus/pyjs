@@ -2,9 +2,9 @@
 
 > Python (CPython) in the browser.
 
-## Getting Started
-
 [Demo](https://programmingplus.github.io/pyjs/demo/)
+
+## Getting Started
 
 You can import PyJS from CDN directly:
 
