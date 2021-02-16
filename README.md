@@ -4,6 +4,8 @@
 
 ## Getting Started
 
+[Demo](https://programmingplus.github.io/pyjs/demo/)
+
 You can import PyJS from CDN directly:
 
 ```html
