@@ -1,7 +1,7 @@
 {
   "name": "@programmingplus/pyjs",
   "version": "0.0.1",
-  "description": "Python 3 in the browser.",
+  "description": "Python (CPython) 3 in the browser.",
   "main": "dist/index.js",
   "files": [
     "dist/**"
