@@ -10,6 +10,8 @@ const term = new Terminal({
 });
 const fitAddon = new FitAddon.FitAddon();
 term.loadAddon(fitAddon);
+term.loadAddon(new Unicode11Addon.Unicode11Addon());
+term.unicode.activeVersion = "11";
 term.open(document.getElementById("terminal"));
 fitAddon.fit();
 const observer = new ResizeObserver((mutations) => void fitAddon.fit());
@@ -38,10 +40,10 @@ run.addEventListener("click", async () => {
     lineBufferPos += appendix.length;
   };
   const flushSuffix = () => {
-    const appendix = lineBuffer.slice(lineBufferPos);
-    term.write(appendix.join(""));
-    if (appendix.length > 0) {
-      term.write(`\x1b[${appendix.length}D`);
+    const appendix = lineBuffer.slice(lineBufferPos).join("");
+    const appendixLength = term._core.unicodeService.getStringCellWidth(appendix);
+    if (appendixLength > 0) {
+      term.write(`${appendix}\x1b[${appendixLength}D`);
     }
   };
   const onDataEvent = term.onData((data) => {
@@ -55,7 +57,7 @@ run.addEventListener("click", async () => {
         break;
       case "\x7f": // backspace
         if (lineBufferPos > 0) {
-          term.write("\x1b[D\x1b[K");
+          term.write(`\x1b[${term._core.unicodeService.getStringCellWidth(lineBuffer[lineBufferPos - 1])}D\x1b[K`);
           lineBuffer.splice(lineBufferPos - 1, 1);
           lineBufferPos--;
           flushSuffix();
@@ -67,13 +69,13 @@ run.addEventListener("click", async () => {
       case "\x1b[D": // arrow left
         if (lineBufferPos > 0) {
           lineBufferPos--;
-          term.write(data);
+          term.write(`\x1b[${term._core.unicodeService.getStringCellWidth(lineBuffer[lineBufferPos])}D`);
         }
         break;
       case "\x1b[C": // arrow right
         if (lineBufferPos < lineBuffer.length) {
+          term.write(`\x1b[${term._core.unicodeService.getStringCellWidth(lineBuffer[lineBufferPos])}C`);
           lineBufferPos++;
-          term.write(data);
         }
         break;
       default: {
