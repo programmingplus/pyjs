@@ -1,13 +1,15 @@
 {
   "name": "@programmingplus/pyjs",
-  "version": "0.0.1",
-  "description": "Python (CPython) 3 in the browser.",
-  "main": "dist/index.js",
+  "version": "0.0.4",
+  "description": "Python (CPython) in the browser.",
+  "main": "dist/index.esm.js",
+  "module": "dist/index.esm.js",
   "files": [
     "dist/**"
   ],
   "scripts": {
-    "build": "rollup -c"
+    "build": "make && rollup -c",
+    "prepack": "rm -rf pyjs-build dist && npm run build"
   },
   "keywords": [],
   "author": "lujjjh <lujjjh@gmail.com>",

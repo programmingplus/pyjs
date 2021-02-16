@@ -18,6 +18,7 @@ export var run = function (code, options) {
   function initModule(Module) {
     var stdinBuffer = [];
     function writeStdin(value) {
+      if (value === undefined || value === null) return;
       if (!(value instanceof Uint8Array)) {
         value = new TextEncoder().encode(String(value));
       }

@@ -1,13 +1,13 @@
 import Module from "./pyjs-build/pyjs";
-import pyjsWasm from "./pyjs-build/pyjs.js.mem";
+import pyjsMem from "./pyjs-build/pyjs.js.mem";
 import pyjsData from "./pyjs-build/pyjs.data";
 
 export var locateFile = function (filename, prefix) {
   switch (filename) {
     case "pyjs.wasm":
-      return prefix + filename;
+      return "";
     case "pyjs.js.mem":
-      return pyjsWasm;
+      return pyjsMem;
     case "pyjs.data":
       return pyjsData;
     default:
