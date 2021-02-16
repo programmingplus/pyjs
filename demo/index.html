@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, min-scale=1.0, max-scale=1.0" />
     <title>PyJS Example</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.10.0/css/xterm.css" />
     <script src="https://cdn.jsdelivr.net/npm/xterm@4.10.0/lib/xterm.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.5.0/lib/xterm-addon-fit.js"></script>
     <style>
       html,
       body {
@@ -21,6 +22,10 @@
         font-family: "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console",
           monospace;
         font-size: 14px;
+      }
+
+      body > * {
+        min-width: 0;
       }
 
       textarea,
@@ -47,7 +52,11 @@ print(f"Hello {name}")
       import * as PyJS from "https://cdn.jsdelivr.net/npm/@programmingplus/pyjs@0.0.4";
 
       const term = new Terminal();
+      const fitAddon = new FitAddon.FitAddon();
+      term.loadAddon(fitAddon);
       term.open(document.getElementById("terminal"));
+      fitAddon.fit();
+      addEventListener("resize", () => fitAddon.fit());
 
       const run = document.getElementById("run");
       run.addEventListener("click", async () => {
