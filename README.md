@@ -2,7 +2,7 @@
 
 > Python (CPython) in the browser.
 
-[Demo](https://programmingplus.github.io/pyjs/demo/)
+[Demo](https://pyjs.programming.plus/demo/)
 
 ## Getting Started
 
