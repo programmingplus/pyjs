@@ -12,6 +12,9 @@
   "keywords": [],
   "author": "lujjjh <lujjjh@gmail.com>",
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-url": "^6.0.0",
