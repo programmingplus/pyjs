@@ -1,1 +1,1 @@
-export * from "https://cdn.jsdelivr.net/npm/@programmingplus/pyjs@0.0.5";
+export * from "https://cdn.jsdelivr.net/npm/@programmingplus/pyjs";

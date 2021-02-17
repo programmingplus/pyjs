@@ -6,18 +6,20 @@
 
 ## Getting Started
 
-You can import PyJS from CDN directly:
+You can import the latest PyJS from CDN directly:
 
 ```html
 <pre id="output"></pre>
 
 <script type="module">
-  import { run } from "https://cdn.jsdelivr.net/npm/@programmingplus/pyjs@0.0.5";
+  import { run } from "https://cdn.jsdelivr.net/npm/@programmingplus/pyjs";
 
   const output = (s) => (document.getElementById("output").textContent += s);
   run(`print(42 ** 42)`, { writeStdout: output, writeStderr: output });
 </script>
 ```
+
+[CodePen](https://codepen.io/lujjjh/pen/dyOWWdQ)
 
 Or, you may install PyJS with npm:
 
