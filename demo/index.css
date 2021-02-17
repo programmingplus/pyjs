@@ -9,7 +9,6 @@ body {
   background-color: #000;
   color: #fff;
   display: flex;
-  flex-direction: column;
   font-family: "Fira Mono", "DejaVu Sans Mono", Menlo, Consolas, "Liberation Mono", Monaco, "Lucida Console", monospace;
   font-size: 14px;
   line-height: 1.6;
@@ -25,12 +24,9 @@ button {
 
 header {
   display: flex;
-}
-
-@media (max-width: 420px) {
-  header {
-    flex-direction: column;
-  }
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
 }
 
 #editor {
@@ -38,7 +34,6 @@ header {
   background-color: #f5f5f6;
   flex: 1;
   min-width: 0;
-  min-height: 15em;
   overflow: hidden;
 }
 
@@ -74,7 +69,7 @@ header {
   position: relative;
   background-color: #000;
   flex: 1;
-  min-height: 400px;
+  min-width: 0;
 }
 
 #loading-indicator {
@@ -96,6 +91,27 @@ header {
 
 .xterm-viewport::-webkit-scrollbar-thumb {
   background-color: #333;
+}
+
+@media (max-width: 960px) {
+  body {
+    flex-direction: column;
+  }
+
+  header {
+    flex-direction: row;
+  }
+
+  header,
+  #terminal {
+    min-height: 80vh;
+  }
+}
+
+@media (max-width: 640px) {
+  header {
+    flex-direction: column;
+  }
 }
 
 /* GitHub Corner */
