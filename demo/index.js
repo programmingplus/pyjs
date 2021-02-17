@@ -12,7 +12,7 @@ flask.updateCode(`from random import randint
 number = randint(0, 100)
 prompt = "Guess a number (1-100): "
 while (i := int(input(prompt))) != number:
-    print("Yout guess is too",
+    print("Your guess is too",
         "low" if i < number else "high")
 
 print("Bingo!")
