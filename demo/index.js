@@ -2,6 +2,22 @@ import * as PyJS from "./pyjs.js";
 
 document.getElementById("loading-indicator").style.display = "none";
 
+const flask = new CodeFlask("#editor", {
+  language: "python",
+  tabSize: 4,
+});
+flask.addLanguage("python", Prism.languages.python);
+flask.updateCode(`from random import randint
+
+number = randint(0, 100)
+prompt = "Guess a number (1-100): "
+while (i := int(input(prompt))) != number:
+    print("Yout guess is too",
+        "low" if i < number else "high")
+
+print("Bingo!")
+`);
+
 const term = new Terminal({
   fontSize: 14,
   lineHeight: 1.6,
@@ -98,7 +114,7 @@ run.addEventListener("click", async () => {
     }
   });
   try {
-    await PyJS.run(document.getElementById("editor").value, {
+    await PyJS.run(flask.getCode(), {
       writeStdout: write,
       writeStderr: write,
       readStdin: async () => {

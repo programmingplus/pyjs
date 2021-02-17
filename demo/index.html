@@ -9,6 +9,8 @@
     />
     <title>PyJS Demo</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/xterm@4.10.0/css/xterm.css" />
+    <script src="https://cdn.jsdelivr.net/npm/codeflask@1.4.1/build/codeflask.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/prismjs@1.23.0/components/prism-python.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xterm@4.10.0/lib/xterm.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xterm-addon-fit@0.5.0/lib/xterm-addon-fit.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xterm-addon-unicode11@0.2.0/lib/xterm-addon-unicode11.js"></script>
@@ -16,11 +18,7 @@
   </head>
   <body>
     <header>
-      <textarea id="editor" spellcheck="off" autocomplete="off" autocapitalize="off">
-name = input("Input your name: ")
-print(f"Hello {name}")
-</textarea
-      >
+      <div id="editor"></div>
       <button id="run" type="button" disabled>Run</button>
     </header>
     <div id="terminal">
