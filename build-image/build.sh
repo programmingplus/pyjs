@@ -24,5 +24,6 @@ emcc -o $DIST_DIR/pyjs.js pyjs.c \
     -s EXPORTED_FUNCTIONS='[_PyJS_Run]' \
     -s EXTRA_EXPORTED_RUNTIME_METHODS='[ccall, cwrap, FS, TTY]' \
     -s ASYNCIFY -s ASYNCIFY_IMPORTS=["emscripten_ensure_data_in_stdin"] \
-    --preload-file $PACKAGE_DIR@/ --use-preload-cache --no-heap-copy \
+    --preload-file $PACKAGE_DIR@/ --exclude-file "*__pycache__*" --exclude-file "*/test/*" \
+    --use-preload-cache --no-heap-copy \
     --js-library library.js -s WASM=0
